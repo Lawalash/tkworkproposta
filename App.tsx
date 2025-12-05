@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   Rocket, 
   RefreshCw, 
@@ -14,6 +14,94 @@ import { LogoConnector } from './components/LogoConnector';
 import { PricingCard } from './components/PricingCard';
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+
+    if (password.trim() === 'twork') {
+      setIsAuthenticated(true);
+      setError('');
+    } else {
+      setError('Senha incorreta. Tente novamente.');
+    }
+  };
+
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-[#043959] via-[#466FA6] to-[#8EA3BF] text-white flex items-center justify-center px-4 py-10 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-60">
+          <div className="absolute -left-10 -top-10 w-60 h-60 bg-[#AD8DF2] rounded-full blur-3xl" aria-hidden />
+          <div className="absolute -right-16 top-10 w-72 h-72 bg-[#B79BF2] rounded-full blur-3xl" aria-hidden />
+          <div className="absolute left-10 bottom-10 w-64 h-64 bg-[#F2D98D] rounded-full blur-3xl" aria-hidden />
+          <div className="absolute right-8 bottom-14 w-52 h-52 bg-[#D99543] rounded-full blur-3xl" aria-hidden />
+        </div>
+
+        <div className="relative w-full max-w-3xl grid md:grid-cols-2 gap-6 items-center bg-white/10 border border-white/20 backdrop-blur-xl rounded-3xl p-6 shadow-2xl shadow-black/20">
+          <div className="space-y-4">
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-semibold tracking-widest uppercase">
+              Pré-visualização segura
+            </div>
+            <h1 className="text-3xl md:text-4xl font-bold leading-tight">
+              Proposta exclusiva <span className="text-[#F2D98D]">Twork</span>
+            </h1>
+            <p className="text-sm md:text-base text-white/80 leading-relaxed">
+              Antes de acessar a proposta completa, confirme que você recebeu esta prévia. Criamos uma experiência de login minimalista, responsiva e alinhada às cores da A2 Data e da Twork.
+            </p>
+            <div className="flex flex-wrap gap-2 text-xs text-white/80">
+              <span className="px-3 py-1 rounded-full bg-white/10 border border-white/10">Seguro</span>
+              <span className="px-3 py-1 rounded-full bg-white/10 border border-white/10">Responsivo</span>
+              <span className="px-3 py-1 rounded-full bg-white/10 border border-white/10">Experiência premium</span>
+            </div>
+          </div>
+
+          <form onSubmit={handleSubmit} className="bg-white text-slate-800 rounded-2xl shadow-xl p-6 space-y-5">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#466FA6]">Área reservada</p>
+              <h2 className="text-2xl font-bold text-slate-900">Login para ver a proposta</h2>
+              <p className="text-sm text-slate-500">Utilize a senha enviada pela A2 Data para desbloquear o documento.</p>
+            </div>
+
+            <div className="space-y-3">
+              <div className="space-y-1">
+                <label className="text-xs font-semibold text-slate-500">Senha</label>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm focus:ring-2 focus:ring-[#466FA6] focus:border-transparent outline-none transition"
+                  placeholder="Digite a senha para acessar"
+                  required
+                />
+              </div>
+
+              {error && (
+                <div className="flex items-center gap-2 text-sm text-red-600 bg-red-50 border border-red-100 rounded-xl px-3 py-2">
+                  <CheckCircle2 className="text-red-500" size={16} />
+                  {error}
+                </div>
+              )}
+            </div>
+
+            <button
+              type="submit"
+              className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-[#043959] via-[#466FA6] to-[#AD8DF2] text-white font-semibold py-3 px-4 rounded-xl shadow-lg shadow-[#043959]/30 hover:translate-y-[-1px] transition-transform"
+            >
+              Entrar
+              <ArrowRight size={18} />
+            </button>
+
+            <div className="text-[11px] text-slate-500 leading-relaxed">
+              Dica: para esta prévia, utilize a senha <span className="font-semibold text-slate-700">twork</span>. A área foi desenhada para dispositivos móveis, com botões amplos e contraste elevado.
+            </div>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* 
