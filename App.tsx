@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import {
-  Rocket,
-  RefreshCw,
-  Layers,
+import { 
+  Rocket, 
+  RefreshCw, 
+  Layers, 
   TrendingUp, 
   Check, 
   ArrowRight,
@@ -14,97 +14,272 @@ import {
   Sparkles,
   Lock
 } from 'lucide-react';
-import { LogoConnector } from './components/LogoConnector';
-import { PricingCard } from './components/PricingCard';
-import { ApprovalModal, DoubtModal } from './components/EngagementModals';
+
+// LogoConnector Component
+const LogoConnector = () => {
+  return (
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-32 -z-10 opacity-90 hidden md:block">
+      <svg width="100%" height="100%" viewBox="0 0 256 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path 
+          d="M10 64 C 70 64, 70 32, 128 64 C 186 96, 186 64, 246 64" 
+          stroke="url(#gradient)" 
+          strokeWidth="4" 
+          strokeLinecap="round"
+          className="animate-pulse"
+        />
+        <circle cx="128" cy="64" r="8" fill="url(#gradient)" className="animate-ping" opacity="0.5" />
+        <circle cx="128" cy="64" r="4" fill="#AD8DF2" />
+        <defs>
+          <linearGradient id="gradient" x1="0" y1="0" x2="256" y2="0" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#466FA6" />
+            <stop offset="0.5" stopColor="#AD8DF2" />
+            <stop offset="1" stopColor="#F2D98D" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+  );
+};
+
+// PricingCard Component
+const PricingCard = ({ title, priceHighlight, installmentHighlight, note, buttonText, detailsContent, isRecommended = false }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div 
+      className={`
+        relative flex flex-col p-8 rounded-3xl transition-all duration-500 border backdrop-blur-sm
+        ${isRecommended 
+          ? 'bg-gradient-to-br from-white via-purple-50/30 to-blue-50/30 border-purple-200 shadow-2xl shadow-purple-200/50 ring-2 ring-purple-300/30 transform md:scale-105' 
+          : 'bg-white/80 border-slate-200 shadow-xl hover:shadow-2xl hover:scale-[1.02]'
+        }
+      `}
+    >
+      {isRecommended && (
+        <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#466FA6] via-[#AD8DF2] to-[#B79BF2] text-white text-xs font-bold uppercase tracking-wider py-2 px-6 rounded-full shadow-lg animate-pulse">
+          <Sparkles className="inline-block mr-1 -mt-1" size={14} />
+          Proposta Completa
+        </div>
+      )}
+
+      <div className="mb-6">
+        <h3 className="text-2xl font-bold text-slate-900 mb-2 leading-tight">{title}</h3>
+      </div>
+
+      <div className="flex-grow space-y-5">
+        <div className={`p-6 rounded-2xl border backdrop-blur-sm transition-all duration-300 ${
+          isRecommended 
+            ? 'bg-gradient-to-br from-purple-50 to-blue-50 border-purple-200' 
+            : 'bg-slate-50 border-slate-200'
+        }`}>
+          <p className="text-xs text-slate-500 mb-2 font-semibold uppercase tracking-wider">Investimento</p>
+          <p className="text-slate-700 font-medium mb-2">{priceHighlight}</p>
+          <p className={`text-3xl font-black ${isRecommended ? 'bg-gradient-to-r from-[#466FA6] to-[#AD8DF2] bg-clip-text text-transparent' : 'text-slate-900'}`}>
+            {installmentHighlight}
+          </p>
+        </div>
+        
+        <div className="flex items-start gap-2 p-4 bg-blue-50/50 rounded-xl border border-blue-100">
+          <CheckCircle2 className="text-blue-500 flex-shrink-0 mt-0.5" size={16} />
+          <p className="text-xs text-slate-600 leading-relaxed">{note}</p>
+        </div>
+      </div>
+
+      <div className="mt-8 pt-6 border-t border-slate-200">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className={`
+            w-full flex items-center justify-center gap-3 py-4 px-6 rounded-xl font-bold transition-all duration-300 transform hover:scale-105
+            ${isOpen 
+              ? 'bg-slate-100 text-slate-700 hover:bg-slate-200' 
+              : isRecommended 
+                ? 'bg-gradient-to-r from-[#466FA6] via-[#AD8DF2] to-[#B79BF2] text-white shadow-xl shadow-purple-300/50 hover:shadow-2xl' 
+                : 'bg-gradient-to-r from-[#043959] to-[#466FA6] text-white shadow-xl shadow-blue-300/50 hover:shadow-2xl'
+            }
+          `}
+        >
+          {buttonText}
+          {isOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+        </button>
+
+        <div 
+          className={`
+            overflow-hidden transition-all duration-700 ease-in-out
+            ${isOpen ? 'max-h-[1000px] opacity-100 mt-6' : 'max-h-0 opacity-0'}
+          `}
+        >
+          <div className="text-sm text-slate-700 space-y-3 bg-gradient-to-br from-slate-50 to-blue-50/30 p-6 rounded-2xl border border-slate-200 shadow-inner">
+            {detailsContent}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [showApprovalModal, setShowApprovalModal] = useState(false);
-  const [showDoubtModal, setShowDoubtModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
+  const handleSubmit = () => {
+    setIsLoading(true);
+    setError('');
 
-    if (password.trim() === 'twork') {
-      setIsAuthenticated(true);
-      setError('');
-    } else {
-      setError('Senha incorreta. Tente novamente.');
+    setTimeout(() => {
+      if (password.trim() === 'twork') {
+        setIsAuthenticated(true);
+      } else {
+        setError('Senha incorreta. Tente novamente.');
+        setIsLoading(false);
+      }
+    }, 800);
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSubmit();
     }
   };
 
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-[#043959] via-[#466FA6] to-[#8EA3BF] text-white flex items-center justify-center px-4 py-10 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-60">
-          <div className="absolute -left-10 -top-10 w-60 h-60 bg-[#AD8DF2] rounded-full blur-3xl" aria-hidden />
-          <div className="absolute -right-16 top-10 w-72 h-72 bg-[#B79BF2] rounded-full blur-3xl" aria-hidden />
-          <div className="absolute left-10 bottom-10 w-64 h-64 bg-[#F2D98D] rounded-full blur-3xl" aria-hidden />
-          <div className="absolute right-8 bottom-14 w-52 h-52 bg-[#D99543] rounded-full blur-3xl" aria-hidden />
+        {/* Animated Background Orbs */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -left-20 -top-20 w-80 h-80 bg-[#AD8DF2] rounded-full blur-3xl opacity-40 animate-pulse" />
+          <div className="absolute -right-20 top-20 w-96 h-96 bg-[#B79BF2] rounded-full blur-3xl opacity-30 animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute left-20 bottom-20 w-72 h-72 bg-[#F2D98D] rounded-full blur-3xl opacity-40 animate-pulse" style={{ animationDelay: '2s' }} />
+          <div className="absolute right-10 bottom-20 w-64 h-64 bg-[#D99543] rounded-full blur-3xl opacity-30 animate-pulse" style={{ animationDelay: '1.5s' }} />
         </div>
 
-        <div className="relative w-full max-w-3xl grid md:grid-cols-2 gap-6 items-center bg-white/10 border border-white/20 backdrop-blur-xl rounded-3xl p-6 shadow-2xl shadow-black/20">
-          <div className="space-y-4">
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-semibold tracking-widest uppercase">
-              Pré-visualização segura
+        {/* Floating Particles */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-white/30 rounded-full animate-float"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${10 + Math.random() * 10}s`
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="relative w-full max-w-5xl grid lg:grid-cols-2 gap-8 items-center">
+          {/* Left Panel - Info */}
+          <div className="space-y-6 text-center lg:text-left order-2 lg:order-1">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-xs font-bold tracking-widest uppercase shadow-xl">
+              <Lock className="animate-pulse" size={14} />
+              Área Protegida
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold leading-tight">
-              Proposta exclusiva <span className="text-[#F2D98D]">Twork</span>
+            
+            <h1 className="text-4xl lg:text-5xl font-black leading-tight">
+              Proposta Exclusiva
+              <span className="block mt-2 bg-gradient-to-r from-[#F2D98D] via-[#AD8DF2] to-white bg-clip-text text-transparent">
+                Twork
+              </span>
             </h1>
-            <p className="text-sm md:text-base text-white/80 leading-relaxed">
-              Antes de acessar a proposta completa, confirme que você recebeu esta prévia. Criamos uma experiência de login minimalista, responsiva e alinhada às cores da A2 Data e da Twork.
+            
+            <p className="text-base lg:text-lg text-white/90 leading-relaxed max-w-xl">
+              Acesse nossa proposta comercial personalizada. Esta prévia foi desenvolvida com design premium, responsivo e alinhado às identidades visuais da <strong className="text-[#F2D98D]">A2 Data</strong> e da <strong className="text-[#AD8DF2]">Twork</strong>.
             </p>
-            <div className="flex flex-wrap gap-2 text-xs text-white/80">
-              <span className="px-3 py-1 rounded-full bg-white/10 border border-white/10">Seguro</span>
-              <span className="px-3 py-1 rounded-full bg-white/10 border border-white/10">Responsivo</span>
-              <span className="px-3 py-1 rounded-full bg-white/10 border border-white/10">Experiência premium</span>
+            
+            <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
+              {[
+                { icon: <ShieldCheck size={14} />, text: 'Seguro' },
+                { icon: <Zap size={14} />, text: 'Responsivo' },
+                { icon: <Sparkles size={14} />, text: 'Premium' }
+              ].map((badge, i) => (
+                <div key={i} className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-sm font-medium">
+                  {badge.icon}
+                  {badge.text}
+                </div>
+              ))}
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="bg-white text-slate-800 rounded-2xl shadow-xl p-6 space-y-5">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#466FA6]">Área reservada</p>
-              <h2 className="text-2xl font-bold text-slate-900">Login para ver a proposta</h2>
-              <p className="text-sm text-slate-500">Utilize a senha enviada pela A2 Data para desbloquear o documento.</p>
-            </div>
-
-            <div className="space-y-3">
-              <div className="space-y-1">
-                <label className="text-xs font-semibold text-slate-500">Senha</label>
-                <input
-                  type="password"
-                  value={password}
-                  onChange={(event) => setPassword(event.target.value)}
-                  className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm focus:ring-2 focus:ring-[#466FA6] focus:border-transparent outline-none transition"
-                  placeholder="Digite a senha para acessar"
-                  required
-                />
+          {/* Right Panel - Login */}
+          <div className="order-1 lg:order-2">
+            <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-8 lg:p-10 border border-white/20 transform hover:scale-105 transition-transform duration-500">
+              <div className="mb-8">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-[#466FA6] to-[#AD8DF2] text-white text-xs font-bold uppercase tracking-wider mb-4">
+                  Acesso Restrito
+                </div>
+                <h2 className="text-3xl font-black text-slate-900 mb-2">Bem-vindo</h2>
+                <p className="text-slate-600">Digite a senha fornecida pela A2 Data para acessar o conteúdo completo.</p>
               </div>
 
-              {error && (
-                <div className="flex items-center gap-2 text-sm text-red-600 bg-red-50 border border-red-100 rounded-xl px-3 py-2">
-                  <CheckCircle2 className="text-red-500" size={16} />
-                  {error}
+              <div className="space-y-6">
+                <div className="space-y-2">
+                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider">Senha de Acesso</label>
+                  <div className="relative">
+                    <input
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      onKeyPress={handleKeyPress}
+                      className="w-full rounded-2xl border-2 border-slate-200 px-5 py-4 text-base font-medium focus:ring-4 focus:ring-[#466FA6]/20 focus:border-[#466FA6] outline-none transition-all bg-white"
+                      placeholder="••••••••"
+                      disabled={isLoading}
+                    />
+                    <Lock className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+                  </div>
                 </div>
-              )}
-            </div>
 
-            <button
-              type="submit"
-              className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-[#043959] via-[#466FA6] to-[#AD8DF2] text-white font-semibold py-3 px-4 rounded-xl shadow-lg shadow-[#043959]/30 hover:translate-y-[-1px] transition-transform"
-            >
-              Entrar
-              <ArrowRight size={18} />
-            </button>
+                {error && (
+                  <div className="flex items-center gap-3 text-sm text-red-700 bg-red-50 border-2 border-red-200 rounded-2xl px-4 py-3 animate-shake">
+                    <CheckCircle2 className="text-red-500 flex-shrink-0" size={18} />
+                    <span className="font-medium">{error}</span>
+                  </div>
+                )}
 
-            <div className="text-[11px] text-slate-500 leading-relaxed">
-              Dica: para esta prévia, utilize a senha <span className="font-semibold text-slate-700">twork</span>. A área foi desenhada para dispositivos móveis, com botões amplos e contraste elevado.
+                <button
+                  onClick={handleSubmit}
+                  disabled={isLoading}
+                  className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-[#043959] via-[#466FA6] to-[#AD8DF2] text-white font-bold text-lg py-5 px-6 rounded-2xl shadow-2xl shadow-[#466FA6]/40 hover:shadow-3xl hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isLoading ? (
+                    <>
+                      <RefreshCw className="animate-spin" size={20} />
+                      Autenticando...
+                    </>
+                  ) : (
+                    <>
+                      Acessar Proposta
+                      <ArrowRight size={20} />
+                    </>
+                  )}
+                </button>
+
+                <div className="pt-6 border-t-2 border-slate-100">
+                  <p className="text-xs text-slate-500 leading-relaxed text-center">
+                    <span className="block mb-2 font-semibold text-slate-700">💡 Dica para esta demonstração:</span>
+                    Use a senha <span className="font-mono font-bold text-[#466FA6] bg-blue-50 px-2 py-0.5 rounded">twork</span> para acessar
+                  </p>
+                </div>
+              </div>
             </div>
-          </form>
+          </div>
         </div>
+
+        <style>{`
+          @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+          }
+          @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+          }
+          .animate-float { animation: float ease-in-out infinite; }
+          .animate-shake { animation: shake 0.3s ease-in-out; }
+        `}</style>
       </div>
     );
   }
@@ -329,19 +504,13 @@ function App() {
             </span>
           </h2>
           
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button
-              onClick={() => setShowApprovalModal(true)}
-              className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-a2-600 to-a2-500 hover:from-a2-500 hover:to-a2-400 text-white font-bold py-4 px-10 rounded-xl shadow-lg shadow-a2-500/30 transform transition hover:-translate-y-1 text-lg"
-            >
-              Aprovar Proposta <CheckCircle2 size={20} />
+          <div className="flex flex-col sm:flex-row justify-center gap-5 mb-12">
+            <button className="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-[#466FA6] via-[#AD8DF2] to-[#B79BF2] hover:scale-105 text-white font-black py-5 px-12 rounded-2xl shadow-2xl shadow-purple-500/30 transform transition-all duration-300 text-lg">
+              Aprovar Proposta <CheckCircle2 size={22} />
             </button>
-
-            <button
-              onClick={() => setShowDoubtModal(true)}
-              className="inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold py-4 px-8 rounded-xl transition-colors border border-slate-700"
-            >
-              Tirar Dúvidas <ArrowRight size={20} />
+            
+            <button className="inline-flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-bold py-5 px-10 rounded-2xl transition-all border-2 border-white/20 hover:scale-105 duration-300">
+              Tirar Dúvidas <ArrowRight size={22} />
             </button>
           </div>
           
@@ -352,9 +521,6 @@ function App() {
           </div>
         </div>
       </footer>
-
-      <ApprovalModal open={showApprovalModal} onClose={() => setShowApprovalModal(false)} />
-      <DoubtModal open={showDoubtModal} onClose={() => setShowDoubtModal(false)} />
     </div>
   );
 }
