@@ -6,10 +6,10 @@ const CONTRACT_TEXT = `CONTRATO DE PRESTAÇÃO DE SERVIÇOS – INTEGRAÇÃO DIG
 1. DAS PARTES
 
 CONTRATANTE:
-[NOME COMPLETO DA CLIENTE], CPF [CPF DA CLIENTE], doravante denominada CONTRATANTE.
+Kethelen Kaylanne Galdino Ferreira do Nascimento, CPF 714.297.854-62, doravante denominada CONTRATANTE.
 
 CONTRATADO:
-[SEU NOME COMPLETO], brasileiro, maior, autônomo (pessoa física, sem CNPJ), CPF [SEU CPF], doravante denominado CONTRATADO.
+Ricardo Alexandre Brasil Júnior, brasileiro, maior, autônomo pessoa física, CPF 70490814425, doravante denominado CONTRATADO.
 
 2. DO OBJETO
 
