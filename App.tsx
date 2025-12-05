@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { 
-  Rocket, 
-  RefreshCw, 
-  Layers, 
+import {
+  Rocket,
+  RefreshCw,
+  Layers,
   TrendingUp, 
   Check, 
   ArrowRight,
@@ -14,6 +14,7 @@ import {
   Sparkles,
   Lock
 } from 'lucide-react';
+import ContactModal from './components/ContactModal';
 
 // LogoConnector Component
 const LogoConnector = () => {
@@ -122,6 +123,7 @@ function App() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [modalType, setModalType] = useState<null | 'approval' | 'doubt'>(null);
 
   const handleSubmit = () => {
     setIsLoading(true);
@@ -142,6 +144,8 @@ function App() {
       handleSubmit();
     }
   };
+
+  const closeModal = () => setModalType(null);
 
   if (!isAuthenticated) {
     return (
@@ -505,11 +509,17 @@ function App() {
           </h2>
           
           <div className="flex flex-col sm:flex-row justify-center gap-5 mb-12">
-            <button className="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-[#466FA6] via-[#AD8DF2] to-[#B79BF2] hover:scale-105 text-white font-black py-5 px-12 rounded-2xl shadow-2xl shadow-purple-500/30 transform transition-all duration-300 text-lg">
+            <button
+              onClick={() => setModalType('approval')}
+              className="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-[#466FA6] via-[#AD8DF2] to-[#B79BF2] hover:scale-105 text-white font-black py-5 px-12 rounded-2xl shadow-2xl shadow-purple-500/30 transform transition-all duration-300 text-lg"
+            >
               Aprovar Proposta <CheckCircle2 size={22} />
             </button>
-            
-            <button className="inline-flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-bold py-5 px-10 rounded-2xl transition-all border-2 border-white/20 hover:scale-105 duration-300">
+
+            <button
+              onClick={() => setModalType('doubt')}
+              className="inline-flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-bold py-5 px-10 rounded-2xl transition-all border-2 border-white/20 hover:scale-105 duration-300"
+            >
               Tirar Dúvidas <ArrowRight size={22} />
             </button>
           </div>
@@ -521,6 +531,7 @@ function App() {
           </div>
         </div>
       </footer>
+      <ContactModal isOpen={!!modalType} type={modalType || 'approval'} onClose={closeModal} />
     </div>
   );
 }
