@@ -223,14 +223,23 @@ function App() {
                   <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider">Senha de Acesso</label>
                   <div className="relative">
                     <input
-                      type="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      onKeyPress={handleKeyPress}
-                      className="w-full rounded-2xl border-2 border-slate-200 px-5 py-4 text-base font-medium focus:ring-4 focus:ring-[#466FA6]/20 focus:border-[#466FA6] outline-none transition-all bg-white"
-                      placeholder="••••••••"
-                      disabled={isLoading}
-                    />
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    onKeyPress={handleKeyPress}
+                    className="
+                      w-full rounded-2xl border-2 border-slate-200 px-5 py-4 
+                      text-base font-medium 
+                      text-slate-900                           // <<< adiciona isso
+                      placeholder:text-slate-400              // (opcional, cor do placeholder)
+                      focus:ring-4 focus:ring-[#466FA6]/20 
+                      focus:border-[#466FA6] outline-none 
+                      transition-all bg-white
+                    "
+                    placeholder="••••••••"
+                    disabled={isLoading}
+                  />
+
                     <Lock className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
                   </div>
                 </div>
@@ -259,13 +268,6 @@ function App() {
                     </>
                   )}
                 </button>
-
-                <div className="pt-6 border-t-2 border-slate-100">
-                  <p className="text-xs text-slate-500 leading-relaxed text-center">
-                    <span className="block mb-2 font-semibold text-slate-700">💡 Dica para esta demonstração:</span>
-                    Use a senha <span className="font-mono font-bold text-[#466FA6] bg-blue-50 px-2 py-0.5 rounded">twork</span> para acessar
-                  </p>
-                </div>
               </div>
             </div>
           </div>
