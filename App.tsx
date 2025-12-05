@@ -8,7 +8,11 @@ import {
   ArrowRight,
   ShieldCheck,
   Zap,
-  CheckCircle2
+  CheckCircle2,
+  ChevronDown,
+  ChevronUp,
+  Sparkles,
+  Lock
 } from 'lucide-react';
 import { LogoConnector } from './components/LogoConnector';
 import { PricingCard } from './components/PricingCard';
@@ -106,88 +110,82 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* 
-        ==============================
-        1) TOPO – PARCERIA
-        ==============================
-      */}
-      <header className="relative bg-white pt-20 pb-16 px-4 sm:px-6 lg:px-8 border-b border-slate-100 overflow-hidden">
-        {/* Decorative Background Elements */}
-        <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-a2-600 via-purple-500 to-client-500"></div>
-        <div className="absolute top-10 right-10 w-64 h-64 bg-a2-50 rounded-full blur-3xl -z-10 opacity-50"></div>
-        <div className="absolute top-20 left-10 w-72 h-72 bg-client-50 rounded-full blur-3xl -z-10 opacity-50"></div>
+    <div className="min-h-screen flex flex-col bg-slate-50">
+      {/* Header */}
+      <header className="relative bg-white pt-24 pb-20 px-4 sm:px-6 lg:px-8 border-b border-slate-200 overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-[#043959] via-[#AD8DF2] to-[#F2D98D]"></div>
+        <div className="absolute top-10 right-10 w-96 h-96 bg-gradient-to-br from-[#466FA6]/10 to-[#AD8DF2]/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 left-10 w-80 h-80 bg-gradient-to-br from-[#F2D98D]/10 to-[#D99543]/10 rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold uppercase tracking-wide mb-6">
-            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 text-green-700 text-xs font-bold uppercase tracking-wider mb-8 shadow-lg">
+            <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse shadow-lg shadow-green-500/50"></span>
             Proposta Comercial Confidencial
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
-            Proposta de Integração Digital
+          <h1 className="text-5xl md:text-6xl font-black text-slate-900 tracking-tight mb-6 leading-tight">
+            Proposta de Integração
+            <span className="block mt-2 bg-gradient-to-r from-[#043959] via-[#466FA6] to-[#AD8DF2] bg-clip-text text-transparent">
+              Digital
+            </span>
           </h1>
-          <p className="text-xl text-slate-500 mb-12">
-            A2 Data <span className="text-slate-300 mx-2">+</span> <span className="text-client-600 font-semibold">[Nome da Cliente]</span>
+          
+          <p className="text-2xl text-slate-600 mb-16 font-medium">
+            A2 Data <span className="text-slate-300 mx-3">×</span> <span className="text-[#466FA6] font-bold">Twork</span>
           </p>
 
-          {/* Logo Section with Connector */}
-          <div className="relative flex flex-col md:flex-row justify-center items-center gap-8 md:gap-32 min-h-[120px]">
+          {/* Logos */}
+          <div className="relative flex flex-col md:flex-row justify-center items-center gap-12 md:gap-40 min-h-[140px]">
             <LogoConnector />
             
-            {/* Logo A2 Data Placeholder */}
-            <div className="flex flex-col items-center z-10 bg-white p-4 rounded-2xl shadow-sm border border-slate-100 w-48 transition-transform hover:scale-105 duration-300">
-              <div className="w-16 h-16 bg-a2-100 rounded-xl flex items-center justify-center text-a2-600 mb-2">
-                <Rocket size={32} />
+            <div className="flex flex-col items-center z-10 bg-white p-6 rounded-3xl shadow-xl border-2 border-slate-100 w-56 transform hover:scale-110 hover:shadow-2xl transition-all duration-500">
+              <div className="w-20 h-20 bg-gradient-to-br from-[#466FA6] to-[#043959] rounded-2xl flex items-center justify-center text-white mb-3 shadow-lg">
+                <Rocket size={36} />
               </div>
-              <span className="font-bold text-slate-800">A2 Data</span>
-              <span className="text-xs text-slate-400">Consultoria & Integração</span>
+              <span className="font-black text-slate-900 text-lg">A2 Data</span>
+              <span className="text-xs text-slate-500 font-medium">Consultoria & Integração</span>
             </div>
 
-            {/* Connection Icon for Mobile */}
-            <div className="md:hidden text-slate-300">
-              <RefreshCw size={24} className="animate-spin-slow" />
+            <div className="md:hidden">
+              <RefreshCw size={28} className="text-[#AD8DF2] animate-spin" style={{ animationDuration: '3s' }} />
             </div>
 
-            {/* Logo Client Placeholder */}
-            <div className="flex flex-col items-center z-10 bg-white p-4 rounded-2xl shadow-sm border border-slate-100 w-48 transition-transform hover:scale-105 duration-300">
-              <div className="w-16 h-16 bg-client-100 rounded-xl flex items-center justify-center text-client-600 mb-2">
-                <TrendingUp size={32} />
+            <div className="flex flex-col items-center z-10 bg-white p-6 rounded-3xl shadow-xl border-2 border-slate-100 w-56 transform hover:scale-110 hover:shadow-2xl transition-all duration-500">
+              <div className="w-20 h-20 bg-gradient-to-br from-[#AD8DF2] to-[#B79BF2] rounded-2xl flex items-center justify-center text-white mb-3 shadow-lg">
+                <TrendingUp size={36} />
               </div>
-              <span className="font-bold text-slate-800">[Logo Cliente]</span>
-              <span className="text-xs text-slate-400">E-commerce</span>
+              <span className="font-black text-slate-900 text-lg">Twork</span>
+              <span className="text-xs text-slate-500 font-medium">E-commerce</span>
             </div>
           </div>
         </div>
       </header>
 
-      {/* 
-        ==============================
-        2) RESUMO DO PROJETO
-        ==============================
-      */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-        <div className="bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden">
+      {/* Project Summary */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+        <div className="bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden">
           <div className="md:flex">
-            <div className="p-8 md:p-10 md:w-2/3">
-              <h2 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <Layers className="text-a2-600" />
+            <div className="p-10 md:p-12 md:w-2/3 bg-gradient-to-br from-white to-blue-50/30">
+              <h2 className="text-3xl font-black text-slate-900 mb-6 flex items-center gap-3">
+                <div className="p-3 bg-gradient-to-br from-[#466FA6] to-[#AD8DF2] rounded-2xl">
+                  <Layers className="text-white" size={28} />
+                </div>
                 O que vamos fazer
               </h2>
-              <p className="text-slate-600 leading-relaxed mb-6">
-                Configurar e integrar o sistema <strong className="text-slate-800">Bling</strong> com a <strong className="text-slate-800">Nuvemshop</strong> e a <strong className="text-slate-800">Shopee</strong> da cliente, centralizando estoque, pedidos e catálogo em um fluxo único. A ideia é reduzir retrabalho, evitar furos de estoque e preparar a operação para crescer com segurança.
+              <p className="text-slate-700 leading-relaxed mb-8 text-lg">
+                Configurar e integrar o sistema <strong className="text-[#466FA6]">Bling</strong> com a <strong className="text-[#466FA6]">Nuvemshop</strong> e a <strong className="text-[#466FA6]">Shopee</strong> da cliente, centralizando estoque, pedidos e catálogo em um fluxo único. A ideia é reduzir retrabalho, evitar furos de estoque e preparar a operação para crescer com segurança.
               </p>
               
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
                   "Integração Bling ↔ Nuvemshop",
                   "Integração Bling ↔ Shopee",
                   "Estoque centralizado e automático",
                   "Treinamento prático"
                 ].map((item, index) => (
-                  <div key={index} className="flex items-center gap-2 text-sm font-medium text-slate-700">
-                    <div className="flex-shrink-0 w-5 h-5 rounded-full bg-a2-50 flex items-center justify-center text-a2-600">
-                      <Check size={12} strokeWidth={3} />
+                  <div key={index} className="flex items-center gap-3 text-base font-semibold text-slate-800 bg-white p-4 rounded-2xl shadow-md border border-slate-100 hover:shadow-lg transition-shadow">
+                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-br from-[#466FA6] to-[#AD8DF2] flex items-center justify-center text-white shadow-lg">
+                      <Check size={14} strokeWidth={3} />
                     </div>
                     {item}
                   </div>
@@ -195,16 +193,16 @@ function App() {
               </div>
             </div>
             
-            <div className="bg-slate-50 p-8 md:w-1/3 flex flex-col justify-center border-t md:border-t-0 md:border-l border-slate-100">
-              <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">Resultado Esperado</h3>
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <ShieldCheck className="text-green-500 mt-1 flex-shrink-0" size={20} />
-                  <p className="text-sm text-slate-600">Segurança de dados e estoque</p>
+            <div className="bg-gradient-to-br from-slate-900 to-slate-800 p-10 md:w-1/3 flex flex-col justify-center border-t-4 md:border-t-0 md:border-l-4 border-[#AD8DF2]">
+              <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-6">Resultado Esperado</h3>
+              <div className="space-y-6">
+                <div className="flex items-start gap-4 p-4 bg-white/5 rounded-2xl backdrop-blur-sm">
+                  <ShieldCheck className="text-green-400 mt-1 flex-shrink-0" size={24} />
+                  <p className="text-white font-medium">Segurança de dados e estoque</p>
                 </div>
-                <div className="flex items-start gap-3">
-                  <Zap className="text-yellow-500 mt-1 flex-shrink-0" size={20} />
-                  <p className="text-sm text-slate-600">Agilidade no processamento de pedidos</p>
+                <div className="flex items-start gap-4 p-4 bg-white/5 rounded-2xl backdrop-blur-sm">
+                  <Zap className="text-yellow-400 mt-1 flex-shrink-0" size={24} />
+                  <p className="text-white font-medium">Agilidade no processamento de pedidos</p>
                 </div>
               </div>
             </div>
@@ -212,112 +210,123 @@ function App() {
         </div>
       </section>
 
-      {/* 
-        ==============================
-        3) PLANOS / VALORES
-        ==============================
-      */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-slate-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-slate-900">Investimento</h2>
-            <p className="text-slate-500 mt-2">Escolha o formato que melhor se adapta ao fluxo financeiro.</p>
+      {/* Pricing Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <div className="inline-block p-3 rounded-2xl bg-gradient-to-br from-[#466FA6] to-[#AD8DF2] mb-6">
+              <TrendingUp className="text-white" size={32} />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">Investimento</h2>
+            <p className="text-xl text-slate-600">Projeto completo com implementação e suporte</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-start">
-            
-            {/* CARD 1 */}
+          <div className="max-w-2xl mx-auto">
             <PricingCard 
-              title="Plano Essencial – Projeto Parcelado"
-              priceHighlight="Valor bruto do projeto: R$ 1.349,07"
-              installmentHighlight="10x de R$ 131,91 no cartão"
-              note="Taxas do cartão ficam por nossa conta. Nós recebemos R$ 1.200,00 líquidos."
-              buttonText="Ver detalhes do plano essencial"
+              title="Projeto de Integração Digital Completo"
+              priceHighlight="Valor do projeto: R$ 1.349,07 + Taxa de implementação: R$ 472,17"
+              installmentHighlight="10x de R$ 204,41"
+              note="Valor total contempla todo o projeto de integração, implementação técnica e acompanhamento até estabilização. O valor no parcelamento já inclui a taxa de juros."
+              buttonText="Ver detalhes completos do projeto"
+              isRecommended={true}
               detailsContent={
                 <>
-                  <p className="font-semibold text-slate-800 mb-2">O Plano Essencial inclui:</p>
-                  <ul className="space-y-2 list-disc pl-5 marker:text-slate-400">
-                    <li>Estudo da operação e definição do fluxo entre Bling, Nuvemshop e Shopee.</li>
-                    <li>Configuração inicial do Bling com foco em gestão de estoque e pedidos.</li>
-                    <li>Integração Bling ↔ Nuvemshop.</li>
-                    <li>Integração Bling ↔ Shopee.</li>
-                    <li>Testes com produtos piloto e ajustes iniciais.</li>
-                    <li>Treinamento prático para uso do sistema no dia a dia.</li>
-                  </ul>
-                  <div className="mt-4 pt-4 border-t border-slate-200">
-                    <p>O valor bruto do projeto é de <strong>R$ 1.349,07</strong>, parcelado em <strong>10x de R$ 131,91</strong>.</p>
-                    <p className="mt-2 text-xs text-slate-500">As taxas de cartão são assumidas por nós, de forma que o valor líquido que recebemos é de aproximadamente R$ 1.200,00.</p>
+                  <p className="font-bold text-slate-900 mb-4 text-base">O projeto inclui:</p>
+                  
+                  <div className="space-y-2 mb-6">
+                    {[
+                      "Estudo completo da operação e mapeamento de processos",
+                      "Definição do fluxo ideal entre Bling, Nuvemshop e Shopee",
+                      "Configuração completa do Bling para gestão de estoque e pedidos",
+                      "Integração Bling ↔ Nuvemshop com sincronização automática",
+                      "Integração Bling ↔ Shopee com sincronização automática",
+                      "Configuração de regras de negócio e automações",
+                      "Testes completos com produtos piloto",
+                      "Ajustes e otimizações durante a fase de testes",
+                      "Treinamento prático da equipe para uso do sistema",
+                      "Acompanhamento pós-implementação até estabilização"
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-start gap-2 text-sm">
+                        <Check className="text-green-500 flex-shrink-0 mt-0.5" size={16} />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <div className="bg-gradient-to-br from-purple-100 to-blue-100 p-5 rounded-2xl border-2 border-purple-200 mb-6">
+                    <div className="space-y-3 text-sm">
+                      <div className="flex justify-between items-center">
+                        <span className="font-medium">Projeto base:</span>
+                        <span className="font-mono font-bold text-lg">R$ 1.349,07</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="font-medium">Taxa de implementação:</span>
+                        <span className="font-mono font-bold text-lg">R$ 472,17</span>
+                      </div>
+                      <div className="h-px bg-purple-300 my-2"></div>
+                      <div className="flex justify-between items-center text-purple-900 font-black text-base">
+                        <span>Investimento total:</span>
+                        <span className="font-mono text-xl">R$ 1.821,24</span>
+                      </div>
+                      <div className="flex justify-between items-center text-purple-900 font-black text-lg bg-white/50 p-3 rounded-lg mt-3">
+                        <span>Parcelado em 10x de:</span>
+                        <span className="font-mono text-2xl">R$ 204,75</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+                    <p className="font-bold text-slate-900 mb-2 text-sm">A taxa de implementação cobre:</p>
+                    <ul className="space-y-1.5 text-sm">
+                      {[
+                        "Estudo técnico aprofundado do seu negócio",
+                        "Arquitetura e desenho completo da integração",
+                        "Implementação técnica especializada",
+                        "Testes extensivos e ajustes necessários",
+                        "Acompanhamento até completa estabilização do sistema"
+                      ].map((item, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <Sparkles className="text-purple-500 flex-shrink-0 mt-0.5" size={14} />
+                          <span className="text-slate-700">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </>
               }
             />
-
-            {/* CARD 2 */}
-            <PricingCard 
-              title="Plano Completo – Projeto + Integração"
-              priceHighlight="Valor base: R$ 1.349,07 + Taxa: R$ 472,17"
-              installmentHighlight="10x de R$ 204,41 c/ tudo incluso"
-              note="Valor já contempla projeto, taxa de integração e custos de parcelamento."
-              buttonText="Ver detalhes do plano completo"
-              isRecommended={true}
-              detailsContent={
-                <>
-                  <p className="font-semibold text-slate-800 mb-2">O Plano Completo inclui tudo o que está no plano essencial, com a taxa de integração já embutida nas parcelas:</p>
-                  <ul className="space-y-2 mb-4 bg-purple-50 p-3 rounded-md border border-purple-100">
-                    <li className="flex justify-between text-xs sm:text-sm">
-                      <span>Valor base do projeto:</span>
-                      <span className="font-mono font-bold">R$ 1.349,07</span>
-                    </li>
-                    <li className="flex justify-between text-xs sm:text-sm">
-                      <span>Taxa de integração (35%):</span>
-                      <span className="font-mono font-bold">R$ 472,17</span>
-                    </li>
-                    <li className="flex justify-between text-xs sm:text-sm pt-2 border-t border-purple-200 text-purple-700 font-bold">
-                      <span>Total parcelado (10x):</span>
-                      <span className="font-mono">R$ 204,41 / mês</span>
-                    </li>
-                  </ul>
-                  
-                  <p className="font-semibold text-slate-800 mb-1">A taxa de integração cobre:</p>
-                  <ul className="space-y-1 list-disc pl-5 marker:text-client-500">
-                    <li>Trabalho de estudo técnico aprofundado do negócio.</li>
-                    <li>Desenho de fluxo e arquitetura da integração.</li>
-                    <li>Acompanhamento de testes e ajustes até a estabilização da operação.</li>
-                  </ul>
-                </>
-              }
-            />
           </div>
         </div>
       </section>
 
-      {/* 
-        ==============================
-        4) MANUTENÇÃO E MELHORIAS
-        ==============================
-      */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center">
-        <div className="inline-block p-3 rounded-full bg-slate-100 text-slate-400 mb-4">
-          <RefreshCw size={20} />
+      {/* Maintenance Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center">
+        <div className="bg-white rounded-3xl shadow-xl p-10 border border-slate-200">
+          <div className="inline-block p-4 rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 text-slate-600 mb-6">
+            <RefreshCw size={32} />
+          </div>
+          <h3 className="text-3xl font-black text-slate-900 mb-4">Manutenção e Melhorias</h3>
+          <p className="text-slate-700 max-w-3xl mx-auto leading-relaxed text-lg">
+            A manutenção é cobrada à parte. Novas melhorias, automações ou integrações extras são discutidas conforme a necessidade e o nível de complexidade. Podemos estruturar <span className="font-bold text-[#466FA6]">valores pontuais por demanda específica</span>, ou <span className="font-bold text-[#466FA6]">um plano mensal de suporte</span>, se fizer sentido para a rotina da cliente.
+          </p>
         </div>
-        <h3 className="text-xl font-bold text-slate-800 mb-3">Manutenção e melhorias</h3>
-        <p className="text-slate-600 max-w-2xl mx-auto leading-relaxed">
-          A manutenção é cobrada à parte. Novas melhorias, automações ou integrações extras são discutidas conforme a necessidade e o nível de complexidade. Podemos estruturar <span className="font-medium text-slate-800">valores pontuais por demanda específica</span>, ou <span className="font-medium text-slate-800">um plano mensal de suporte</span>, se fizer sentido para a rotina da cliente.
-        </p>
       </section>
 
-      {/* 
-        ==============================
-        5) CHAMADA FINAL / CTA
-        ==============================
-      */}
-      <footer className="mt-auto bg-slate-900 text-white py-16 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
-         {/* Footer ambient light */}
-         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-a2-600/20 rounded-full blur-[100px] pointer-events-none"></div>
+      {/* Footer CTA */}
+      <footer className="mt-auto bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-20 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[500px] bg-[#466FA6]/10 rounded-full blur-[120px] pointer-events-none"></div>
+        <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-[#AD8DF2]/10 rounded-full blur-[100px] pointer-events-none"></div>
 
-        <div className="relative z-10 max-w-3xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6">
-            "Nosso objetivo é deixar a operação digital da cliente mais organizada, leve e pronta para crescer."
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <div className="inline-block p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 mb-8">
+            <CheckCircle2 size={40} className="text-[#F2D98D]" />
+          </div>
+          
+          <h2 className="text-3xl md:text-4xl font-black mb-8 leading-tight">
+            "Nosso objetivo é deixar a operação digital da cliente
+            <span className="block mt-2 bg-gradient-to-r from-[#F2D98D] via-[#AD8DF2] to-white bg-clip-text text-transparent">
+              mais organizada, leve e pronta para crescer."
+            </span>
           </h2>
           
           <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -336,9 +345,11 @@ function App() {
             </button>
           </div>
           
-          <p className="mt-10 text-slate-500 text-sm">
-            © {new Date().getFullYear()} A2 Data. Todos os direitos reservados.
-          </p>
+          <div className="pt-8 border-t border-white/10">
+            <p className="text-slate-400 text-sm font-medium">
+              © {new Date().getFullYear()} A2 Data. Todos os direitos reservados.
+            </p>
+          </div>
         </div>
       </footer>
 
