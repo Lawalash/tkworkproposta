@@ -405,9 +405,9 @@ function App() {
           <div className="max-w-2xl mx-auto">
             <PricingCard 
               title="Projeto de Integração Digital Completo"
-              priceHighlight="Valor do projeto: R$ 1.349,07 + Taxa de implementação: R$ 472,17"
-              installmentHighlight="10x de R$ 204,41"
-              note="Valor total contempla todo o projeto de integração, implementação técnica e acompanhamento até estabilização. O valor no parcelamento já inclui a taxa de juros."
+              priceHighlight="Valor total: R$ 2.044,10 · 10x de R$ 204,41"
+              installmentHighlight="R$ 204,41 / mês · Todo dia 19"
+              note="1º pagamento + 4 meses seguidos (todo dia 19) = 5 parcelas de R$ 204,41. Após o 5º mês, o restante é pago de uma vez na forma de pagamento da sua escolha."
               buttonText="Ver detalhes completos do projeto"
               isRecommended={true}
               detailsContent={
@@ -436,28 +436,37 @@ function App() {
                   
                   <div className="bg-gradient-to-br from-purple-100 to-blue-100 p-5 rounded-2xl border-2 border-purple-200 mb-6">
                     <div className="space-y-3 text-sm">
-                      <div className="flex justify-between items-center">
-                        <span className="font-medium">Projeto base:</span>
-                        <span className="font-mono font-bold text-lg">R$ 1.349,07</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="font-medium">Taxa de implementação:</span>
-                        <span className="font-mono font-bold text-lg">R$ 472,17</span>
+                      <div className="flex justify-between items-center text-purple-900 font-black text-base">
+                        <span>Valor total do projeto:</span>
+                        <span className="font-mono text-xl">R$ 2.044,10</span>
                       </div>
                       <div className="h-px bg-purple-300 my-2"></div>
-                      <div className="flex justify-between items-center text-purple-900 font-black text-base">
-                        <span>Investimento total:</span>
-                        <span className="font-mono text-xl">R$ 1.821,24</span>
+                      <p className="font-bold text-purple-900 text-sm mt-2">Condições de pagamento:</p>
+                      <div className="space-y-2">
+                        {[
+                          { mes: '1º pagamento (hoje)', desc: 'R$ 204,41 — via Pix' },
+                          { mes: '2º ao 5º mês', desc: 'R$ 204,41 / mês — todo dia 19' },
+                          { mes: 'Após o 5º mês', desc: 'Restante: R$ 1.022,05' },
+                        ].map((row, i) => (
+                          <div key={i} className="flex justify-between items-center bg-white/60 rounded-lg px-3 py-2">
+                            <span className="font-semibold text-purple-800">{row.mes}</span>
+                            <span className="font-mono text-slate-700 text-xs">{row.desc}</span>
+                          </div>
+                        ))}
                       </div>
-                      <div className="flex justify-between items-center text-purple-900 font-black text-lg bg-white/50 p-3 rounded-lg mt-3">
-                        <span>Parcelado em 10x de:</span>
-                        <span className="font-mono text-2xl">R$ 204,75</span>
+                      <div className="bg-white/70 rounded-xl p-3 mt-3 border border-purple-300">
+                        <p className="font-bold text-purple-900 text-xs mb-2">Formas de pagamento aceitas para o restante:</p>
+                        <div className="flex flex-wrap gap-2">
+                          {['Pix', 'Cartão de Crédito', 'Cartão de Débito', 'Boleto'].map((forma) => (
+                            <span key={forma} className="text-xs font-semibold bg-purple-100 text-purple-800 rounded-full px-3 py-1 border border-purple-200">{forma}</span>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
                   
                   <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
-                    <p className="font-bold text-slate-900 mb-2 text-sm">A taxa de implementação cobre:</p>
+                    <p className="font-bold text-slate-900 mb-2 text-sm">O projeto contempla:</p>
                     <ul className="space-y-1.5 text-sm">
                       {[
                         "Estudo técnico aprofundado do seu negócio",
@@ -490,6 +499,255 @@ function App() {
           <p className="text-slate-700 max-w-3xl mx-auto leading-relaxed text-lg">
             A manutenção é cobrada à parte. Novas melhorias, automações ou integrações extras são discutidas conforme a necessidade e o nível de complexidade. Podemos estruturar <span className="font-bold text-[#466FA6]">valores pontuais por demanda específica</span>, ou <span className="font-bold text-[#466FA6]">um plano mensal de suporte</span>, se fizer sentido para a rotina da cliente.
           </p>
+        </div>
+      </section>
+
+      {/* Brinde Section - Marketing */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#F2D98D]/10 via-white to-[#AD8DF2]/10">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-[#D99543] to-[#F2D98D] text-[#043959] text-xs font-black uppercase tracking-widest mb-6 shadow-lg">
+              <Sparkles size={14} />
+              Brinde Exclusivo · Incluso no Projeto
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">Marketing Digital</h2>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+              Como parte do seu projeto, você ganha gratuitamente serviços especializados em conteúdo e divulgação digital — sem nenhum custo adicional.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-3xl shadow-2xl border-2 border-[#F2D98D]/60 overflow-hidden relative">
+            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#D99543] via-[#F2D98D] to-[#AD8DF2]"></div>
+            <div className="p-10 md:p-12">
+              <div className="flex flex-col gap-8">
+                <div>
+                  <h3 className="text-2xl font-black text-slate-900 mb-2">Brinde: Produção de Conteúdo Digital</h3>
+                  <p className="text-[#D99543] font-bold text-sm uppercase tracking-wider mb-6">Marketing Digital & Conteúdo Estratégico · Incluso no Valor</p>
+                  
+                  <p className="text-slate-600 leading-relaxed mb-8 text-base">
+                    Incluído no seu projeto sem custo extra: uma parceria com especialista em marketing digital para divulgar sua loja e aumentar as vendas. Você <strong className="text-[#D99543]">não paga nada a mais</strong> por isso — já está incluso no valor combinado.
+                  </p>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {[
+                      { title: 'Produção de Vídeos', desc: 'Reels, vídeos de divulgação e anúncios para Instagram e Shopee' },
+                      { title: 'Social Media & Story Maker', desc: 'Conteúdo estratégico para stories e feed do Instagram' },
+                      { title: 'Artes para Divulgação', desc: 'Banners, posts e artes visuais para suas campanhas' },
+                      { title: 'Conteúdo Estratégico', desc: 'Planejamento de conteúdo para sua marca crescer online' },
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-start gap-3 p-4 rounded-2xl bg-gradient-to-br from-[#F2D98D]/10 to-[#AD8DF2]/10 border border-[#F2D98D]/40 hover:shadow-md transition-shadow">
+                        <div className="w-2 h-2 rounded-full bg-gradient-to-br from-[#D99543] to-[#F2D98D] flex-shrink-0 mt-1.5" />
+                        <div>
+                          <p className="font-bold text-slate-900 text-sm">{item.title}</p>
+                          <p className="text-slate-500 text-xs leading-relaxed mt-0.5">{item.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-8 p-5 bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl border-2 border-green-200 flex items-center gap-4">
+                    <CheckCircle2 className="text-green-500 flex-shrink-0" size={28} />
+                    <p className="text-sm text-slate-700 leading-relaxed">
+                      <strong className="text-green-800">100% incluso:</strong> Os serviços de marketing digital fazem parte do pacote contratado, <strong>sem nenhum custo adicional</strong> para você.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contract Terms Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-slate-800 to-slate-700 text-white text-xs font-black uppercase tracking-widest mb-6 shadow-lg">
+              <ShieldCheck size={14} />
+              Termos do Contrato
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">Resumo do Acordo</h2>
+            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+              Abaixo estão todos os pontos acordados entre as partes. Leia e, ao concordar, clique em <strong>"Aprovar Proposta"</strong> ao final.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden">
+            {/* Header do contrato */}
+            <div className="bg-gradient-to-r from-[#043959] via-[#466FA6] to-[#AD8DF2] p-8 text-white">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                  <p className="text-white/70 text-xs font-bold uppercase tracking-wider mb-1">Proposta Comercial</p>
+                  <h3 className="text-2xl font-black">A2 Data × Kethlyn</h3>
+                  <p className="text-white/80 text-sm mt-1">Projeto de Integração Digital Completo</p>
+                </div>
+                <div className="text-right">
+                  <p className="text-white/70 text-xs font-bold uppercase tracking-wider mb-1">Data de Início</p>
+                  <p className="text-xl font-black">19 de Março de 2026</p>
+                  <p className="text-white/80 text-sm mt-1">Vencimento todo dia 19</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-8 md:p-10 space-y-8">
+
+              {/* Cláusula 1 - Escopo */}
+              <div className="border-l-4 border-[#466FA6] pl-6">
+                <h4 className="font-black text-slate-900 text-lg mb-3 flex items-center gap-2">
+                  <span className="w-7 h-7 rounded-full bg-gradient-to-br from-[#466FA6] to-[#AD8DF2] text-white text-xs font-black flex items-center justify-center flex-shrink-0">1</span>
+                  Escopo do Projeto
+                </h4>
+                <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                  A <strong className="text-slate-900">A2 Data</strong> se compromete a realizar a integração completa dos sistemas da cliente, conforme descrito abaixo:
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {[
+                    "Configuração completa do sistema Bling",
+                    "Integração Bling ↔ Nuvemshop (site)",
+                    "Integração Bling ↔ Shopee",
+                    "Sincronização automática de estoque",
+                    "Sincronização automática de pedidos",
+                    "Configuração de regras de negócio",
+                    "Testes completos com produtos piloto",
+                    "Treinamento prático da equipe",
+                    "Acompanhamento até estabilização",
+                    "Suporte durante implementação",
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center gap-2 text-sm text-slate-700">
+                      <Check className="text-[#466FA6] flex-shrink-0" size={15} strokeWidth={3} />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="h-px bg-slate-100" />
+
+              {/* Cláusula 2 - Valor e Pagamento */}
+              <div className="border-l-4 border-[#AD8DF2] pl-6">
+                <h4 className="font-black text-slate-900 text-lg mb-3 flex items-center gap-2">
+                  <span className="w-7 h-7 rounded-full bg-gradient-to-br from-[#AD8DF2] to-[#B79BF2] text-white text-xs font-black flex items-center justify-center flex-shrink-0">2</span>
+                  Valor e Condições de Pagamento
+                </h4>
+                <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-6 border border-purple-200">
+                  <div className="flex justify-between items-center mb-4 pb-4 border-b border-purple-200">
+                    <span className="font-bold text-slate-700">Valor total do contrato:</span>
+                    <span className="font-black text-2xl text-[#AD8DF2] font-mono">R$ 2.044,10</span>
+                  </div>
+                  <p className="font-bold text-slate-800 text-sm mb-3">Forma de pagamento acordada:</p>
+                  <div className="space-y-2 text-sm">
+                    {[
+                      { etapa: '1º Pagamento — 19/03/2026', valor: 'R$ 204,41', forma: 'Pix', destaque: true },
+                      { etapa: '2ª Parcela — 19/04/2026', valor: 'R$ 204,41', forma: 'Pix', destaque: false },
+                      { etapa: '3ª Parcela — 19/05/2026', valor: 'R$ 204,41', forma: 'Pix', destaque: false },
+                      { etapa: '4ª Parcela — 19/06/2026', valor: 'R$ 204,41', forma: 'Pix', destaque: false },
+                      { etapa: '5ª Parcela — 19/07/2026', valor: 'R$ 204,41', forma: 'Pix', destaque: false },
+                      { etapa: 'Restante — Após 19/07/2026', valor: 'R$ 1.022,05', forma: 'Pix · Crédito · Débito · Boleto', destaque: true },
+                    ].map((row, i) => (
+                      <div key={i} className={`flex justify-between items-center rounded-xl px-4 py-3 ${row.destaque ? 'bg-white border-2 border-purple-300 shadow-sm' : 'bg-white/60'}`}>
+                        <div>
+                          <p className={`font-bold text-xs ${row.destaque ? 'text-purple-900' : 'text-slate-700'}`}>{row.etapa}</p>
+                          <p className="text-slate-400 text-xs">{row.forma}</p>
+                        </div>
+                        <span className={`font-black font-mono text-sm ${row.destaque ? 'text-purple-900 text-base' : 'text-slate-700'}`}>{row.valor}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-4 p-3 bg-purple-100/60 rounded-xl text-xs text-purple-800 font-medium leading-relaxed">
+                    O vencimento de todas as parcelas mensais ocorre todo dia <strong>19 de cada mês</strong>, conforme data do primeiro pagamento. O valor restante será quitado após a 5ª parcela, na forma de pagamento escolhida pela cliente.
+                  </div>
+                </div>
+              </div>
+
+              <div className="h-px bg-slate-100" />
+
+              {/* Cláusula 3 - Brinde */}
+              <div className="border-l-4 border-[#D99543] pl-6">
+                <h4 className="font-black text-slate-900 text-lg mb-3 flex items-center gap-2">
+                  <span className="w-7 h-7 rounded-full bg-gradient-to-br from-[#D99543] to-[#F2D98D] text-white text-xs font-black flex items-center justify-center flex-shrink-0">3</span>
+                  Brinde Incluso — Marketing Digital
+                </h4>
+                <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                  Como parte integrante deste contrato, <strong className="text-slate-900">sem qualquer custo adicional</strong>, a cliente receberá os seguintes serviços de marketing digital, já contemplados no valor combinado:
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {[
+                    { title: 'Produção de Vídeos (Reels)', desc: 'Vídeos para Instagram e Shopee' },
+                    { title: 'Social Media & Story Maker', desc: 'Conteúdo para stories e feed' },
+                    { title: 'Artes para Divulgação', desc: '2 a 3 banners para Instagram' },
+                    { title: 'Conteúdo Estratégico', desc: 'Planejamento de crescimento da marca' },
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-start gap-2 p-3 rounded-xl bg-amber-50 border border-amber-200">
+                      <CheckCircle2 className="text-amber-500 flex-shrink-0 mt-0.5" size={15} />
+                      <div>
+                        <p className="font-bold text-slate-900 text-xs">{item.title}</p>
+                        <p className="text-slate-500 text-xs">{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="h-px bg-slate-100" />
+
+              {/* Cláusula 4 - Obrigações */}
+              <div className="border-l-4 border-slate-400 pl-6">
+                <h4 className="font-black text-slate-900 text-lg mb-3 flex items-center gap-2">
+                  <span className="w-7 h-7 rounded-full bg-slate-500 text-white text-xs font-black flex items-center justify-center flex-shrink-0">4</span>
+                  Responsabilidades das Partes
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                  <div>
+                    <p className="font-bold text-slate-800 mb-2">A2 Data se compromete a:</p>
+                    <ul className="space-y-1.5 text-slate-600">
+                      {[
+                        "Executar o projeto conforme escopo definido",
+                        "Manter comunicação clara durante o processo",
+                        "Realizar testes antes de cada entrega",
+                        "Oferecer suporte durante a implementação",
+                        "Entregar o projeto com qualidade e prazo acordado",
+                      ].map((item, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <Check className="text-[#466FA6] flex-shrink-0 mt-0.5" size={13} strokeWidth={3} />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-bold text-slate-800 mb-2">A cliente se compromete a:</p>
+                    <ul className="space-y-1.5 text-slate-600">
+                      {[
+                        "Realizar os pagamentos nas datas acordadas",
+                        "Fornecer os acessos necessários às plataformas",
+                        "Participar do treinamento fornecido",
+                        "Comunicar problemas para ajustes imediatos",
+                        "Respeitar o cronograma de implementação",
+                      ].map((item, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <Check className="text-[#466FA6] flex-shrink-0 mt-0.5" size={13} strokeWidth={3} />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div className="h-px bg-slate-100" />
+
+              {/* Rodapé do contrato */}
+              <div className="bg-slate-50 rounded-2xl p-6 text-center">
+                <p className="text-xs text-slate-500 leading-relaxed max-w-2xl mx-auto">
+                  Ao clicar em <strong>"Aprovar Proposta"</strong> abaixo, a cliente declara ter lido, compreendido e concordado com todos os termos acima descritos, autorizando o início dos trabalhos mediante o primeiro pagamento de <strong>R$ 204,41</strong>.
+                </p>
+                <p className="text-xs text-slate-400 mt-3">
+                  A2 Data · Ricardo Alexandre (CEO) · Contrato gerado em 19/03/2026
+                </p>
+              </div>
+
+            </div>
+          </div>
         </div>
       </section>
 
