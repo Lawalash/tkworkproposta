@@ -38,7 +38,7 @@ function LoginScreen({ onAuth }: { onAuth: () => void }) {
           </div>
           <h1 className="text-4xl lg:text-5xl font-black leading-tight">
             Proposta Exclusiva
-            <span className="block mt-2 bg-gradient-to-r from-[#F2D98D] via-[#AD8DF2] to-white bg-clip-text text-transparent">Twork</span>
+            <span className="block mt-2 bg-gradient-to-r from-[#F2D98D] via-[#AD8DF2] to-white bg-clip-text text-transparent">Twok</span>
           </h1>
           <p className="text-base lg:text-lg text-white/90 leading-relaxed max-w-xl">
             Proposta comercial personalizada com encerramento do projeto Bling e novo contrato Olist.

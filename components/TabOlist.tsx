@@ -33,6 +33,8 @@ Valor total: R$ 800,00
 – Parcelas 1ª a 5ª: R$ 125,00/mês
 – 6ª parcela (saldo final): R$ 175,00
 
+A primeira parcela (R$ 125,00) será paga no dia 18/05, e o projeto terá sua execução iniciada após o pagamento e a criação da conta Olist com o novo CNPJ.
+
 Formas de pagamento aceitas no 6º mês:
 a) PIX/transferência: R$ 175,00 à vista (sem acréscimo)
 b) Dinheiro: R$ 175,00 à vista (sem acréscimo)
@@ -121,8 +123,8 @@ export default function TabOlist() {
         'Olá, Ricardo! 🚀 Confirmo que li e aceito o Contrato de Migração para Olist.\n\n' +
         '📋 *Resumo do meu aceite:*\n' +
         '• Valor total: R$ 800,00\n' +
-        '• 5x de R$ 125,00 + R$ 175,00 no 6º mês\n' +
-        '• Sei que o projeto depende da criação do meu CNPJ\n' +
+        '• 5x de R$ 125,00 + R$ 175,00 no 6º mês (1º pagamento em 18/05)\n' +
+        '• Sei que o projeto só inicia após a criação do CNPJ e pagamento da 1ª parcela\n' +
         '• Sei que execução de marketing NÃO está inclusa (apenas orientação no treinamento)\n' +
         '• Estou ciente das restrições durante a execução\n\n' +
         '📝 *Assinatura digital:* Concordo que irei assinar digitalmente o meu Contrato Olist pela plataforma Gov.br e enviarei o documento assinado a você pelo WhatsApp.'
@@ -146,8 +148,8 @@ export default function TabOlist() {
             <li>1. Salve o PDF gerado</li>
             <li>2. Acesse <strong>assinador.iti.br</strong></li>
             <li>3. Assine digitalmente pelo Gov.br</li>
-            <li>4. Envie o documento assinado pelo WhatsApp</li>
-            <li>5. Aguarde a criação do CNPJ para início dos trabalhos</li>
+            <li>4. Envie o contrato assinado pelo WhatsApp</li>
+            <li>5. Aguarde a criação do CNPJ e o pagamento da 1ª parcela (18/05) para o início dos trabalhos</li>
           </ol>
         </div>
         <button onClick={() => setSuccess(false)} className="px-8 py-3 bg-gradient-to-r from-[#AD8DF2] to-[#466FA6] text-white font-bold rounded-xl hover:scale-105 transition-all shadow-lg">Voltar</button>
@@ -211,7 +213,7 @@ export default function TabOlist() {
           ))}
         </div>
         <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl">
-          <p className="text-sm text-amber-800"><strong>⚠️ Pré-requisito:</strong> O início depende da criação do CNPJ pela cliente — obrigatório para cadastro no Olist.</p>
+          <p className="text-sm text-amber-800"><strong>⚠️ Pré-requisito:</strong> A execução só inicia após a criação do CNPJ (conta Olist) e o pagamento da 1ª parcela em 18/05.</p>
         </div>
       </div>
 
@@ -253,7 +255,7 @@ export default function TabOlist() {
         </h3>
         <div className="space-y-2 mb-4">
           {[
-            { mes: '1ª parcela', val: 'R$ 125,00', obs: 'Mês 1' },
+            { mes: '1ª parcela', val: 'R$ 125,00', obs: '18/05' },
             { mes: '2ª parcela', val: 'R$ 125,00', obs: 'Mês 2' },
             { mes: '3ª parcela', val: 'R$ 125,00', obs: 'Mês 3' },
             { mes: '4ª parcela', val: 'R$ 125,00', obs: 'Mês 4' },
@@ -360,7 +362,7 @@ export default function TabOlist() {
           <input type="checkbox" checked={accepted} onChange={e => { setAccepted(e.target.checked); setError(false); }}
             className="mt-1 w-6 h-6 rounded border-2 border-slate-400 cursor-pointer" />
           <span className="text-sm font-bold text-slate-900 group-hover:text-[#AD8DF2] transition-colors leading-relaxed">
-            Declaro que li e concordo com o Contrato de Migração para Olist (R$ 800,00). Estou ciente que: o projeto depende do meu CNPJ; execução de marketing <strong>NÃO está inclusa</strong> (apenas orientação no treinamento); dificuldade com a plataforma não é vício de serviço; devo respeitar as restrições durante a execução. <strong>Concordo que irei assinar digitalmente o Contrato Olist e o Termo de Encerramento pelo Gov.br</strong> e enviarei os documentos assinados pelo WhatsApp.
+            Declaro que li e concordo com o Contrato de Migração para Olist (R$ 800,00). Estou ciente que: a execução só inicia após a criação da conta Olist com meu CNPJ e o pagamento da 1ª parcela (18/05); execução de marketing <strong>NÃO está inclusa</strong> (apenas orientação no treinamento); dificuldade com a plataforma não é vício de serviço; devo respeitar as restrições durante a execução. <strong>Concordo que irei assinar digitalmente o Contrato Olist e o Termo de Encerramento pelo Gov.br</strong> e enviarei os documentos assinados pelo WhatsApp.
           </span>
         </label>
         {error && (

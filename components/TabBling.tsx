@@ -48,7 +48,7 @@ b) Dinheiro: R$ 600,00 à vista (sem acréscimo)
 c) Cartão de crédito à vista: R$ 600,00 (sem acréscimo)
 d) Cartão de crédito parcelado: sujeito a juros da operadora do cartão
 
-Data prevista de pagamento: 16 ou 17 de maio de 2026
+Data prevista de pagamento: 18 de maio de 2026
 
 6. DA RENÚNCIA AO MARKETING
 O serviço de brinde (1 vídeo + 3 banners de marketing) oferecido verbalmente pelo CONTRATADO
@@ -115,7 +115,7 @@ export default function TabBling() {
         '📋 *Resumo do meu aceite:*\n' +
         '• Valor acordado: R$ 1.008,82\n' +
         '• Já paguei: R$ 408,82\n' +
-        '• Saldo restante: R$ 600,00 (a pagar em 16-17/05/2026 na forma de minha escolha)\n' +
+        '• Saldo restante: R$ 600,00 (a pagar em 18/05/2026 na forma de minha escolha)\n' +
         '• Estou ciente que o brinde de marketing NÃO será entregue\n\n' +
         '📝 *Assinatura digital:* Concordo que irei assinar digitalmente o meu Termo de Encerramento pela plataforma Gov.br e enviarei o documento assinado a você pelo WhatsApp.'
       );
@@ -230,7 +230,7 @@ export default function TabBling() {
           </div>
           <div className="bg-slate-100 border border-slate-300 rounded-xl p-4 text-center">
             <p className="text-xs text-slate-600 font-bold uppercase tracking-wider mb-1">Previsão</p>
-            <p className="text-xl font-black text-slate-800">16–17/05</p>
+            <p className="text-xl font-black text-slate-800">18/05</p>
             <p className="text-xs text-slate-500">Maio/2026</p>
           </div>
         </div>
@@ -320,7 +320,7 @@ export default function TabBling() {
           <input type="checkbox" checked={accepted} onChange={e => { setAccepted(e.target.checked); setError(false); }}
             className="mt-1 w-6 h-6 rounded border-2 border-slate-400 text-[#466FA6] cursor-pointer" />
           <span className="text-sm font-bold text-slate-900 group-hover:text-[#466FA6] transition-colors leading-relaxed">
-            Declaro que li e concordo com o Termo de Encerramento do contrato Bling. Estou ciente que o saldo de <strong>R$ 600,00</strong> será pago até 16–17/05/2026 na forma de pagamento de minha escolha (PIX, dinheiro, cartão à vista ou parcelado). Confirmo que o brinde de marketing <strong>NÃO será entregue</strong>. Concordo que irei <strong>assinar digitalmente o Termo pelo Gov.br</strong> e enviarei o documento assinado pelo WhatsApp.
+            Declaro que li e concordo com o Termo de Encerramento do contrato Bling. Estou ciente que o saldo de <strong>R$ 600,00</strong> será pago até 18/05/2026 na forma de pagamento de minha escolha (PIX, dinheiro, cartão à vista ou parcelado). Confirmo que o brinde de marketing <strong>NÃO será entregue</strong>. Concordo que irei <strong>assinar digitalmente o Termo pelo Gov.br</strong> e enviarei o documento assinado pelo WhatsApp.
           </span>
         </label>
         {error && (
